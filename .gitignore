@@ -1,0 +1,14 @@
+#-------------------------------------------------------------------------------
+#TITLE:                 DataQuest - Life is Endless Analysis. 
+#INFO: .gitignore file for dataQuest project
+#AUTHOR: Shchablo Konstantin
+#MAIL: Shchablo@gmail.com
+#-------------------------------------------------------------------------------
+*.a
+*~
+bin/
+scripts/
+data/
+cards/
+build/
+results/
