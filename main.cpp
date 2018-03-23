@@ -11,7 +11,6 @@
 #include "LyPetiRead.hpp"
 
 int main(int argc, char* argv[]) {
-
 	LyPetiRead stream;
   bool isOpen = false;
   bool isClose = false;
@@ -43,7 +42,7 @@ int main(int argc, char* argv[]) {
             uint16_t bcid = cbuf[8*j + 2]|(((uint16_t)cbuf[8*j + 1])<<8);
             uint64_t coarse = ((uint64_t)cbuf[8*j + 6])|((uint64_t)cbuf[8*j + 5]<<8)|((uint64_t)cbuf[8*j + 4]<<16)|((uint64_t)cbuf[8*j + 3]<<24); 
             uint8_t fine = cbuf[8*j + 7];
-            double time = (coarse + fine/256.0)*0.009765625;
+            double time = (coarse + fine/256.0)*2.5;
 		    	  printf("ch=%d, bcid=%d, coarse=%lu, fine=%u, time=%f[ns]\n", 
                    ch, bcid, coarse, fine, time);
 		      }
