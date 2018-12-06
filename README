@@ -1,7 +1,8 @@
 #PROGRAM: 
 
-  example: Example for read data files form lyon DAQ.
+  example: Example for read raw data files form lyon DAQ.
 --------------------------------------------------------------------------------
+
 #SYNTAX: ./example path/to/file
 
 --------------------------------------------------------------------------------
@@ -23,9 +24,5 @@
 
 #SUPPORT:
 
-  Shchablo@gmail.com
+  shchablo@gmail.com
 --------------------------------------------------------------------------------
-
-
-
-

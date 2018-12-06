@@ -1,3 +1,9 @@
+/*
+  \author    Laurent Mirabito
+  \version   1.0
+  \date      May 2016
+  \copyright GNU Public License.
+*/
 #ifndef _zdaq_buffer_h
 #define _zdaq_buffer_h
 
@@ -8,38 +14,6 @@
 #include <zlib.h>
 #include <iostream>
 namespace zdaq {
-/**
-  \class buffer
-  \brief the buffer is the basic data object exchanged between process
-  \details The buffer structure consists of
-      - the detector id (int32_t)
-      - the datasource id (int32_t)
-      - the event id (int32_t)
-      - the bunch crossing id (int64_t)
-      - the payload ( char array of (buffer size - 20)
-  \author    Laurent Mirabito
-  \version   1.0
-  \date      May 2016
-  \copyright GNU Public License.
-*/
-/* Output buf example ----------------------------------------------------------
-	  uint32_t* ibuf=(uint32_t*) b.payload();
-		int absbcid = ibuf[3];
-		absbcid = (absbcid << 32) | ibuf[2];
-		printf("\n number %d, GTC %d, ABSBCID %lu, mezzanine number %u,",
-		       ibuf[0], ibuf[1] & 0xFFFF, absbcid, ibuf[4]);
-		printf("IP address %u.%u.%u.%u,", ibuf[5] & 0xFF, (ibuf[5] >> 8) & 0xFF,
-		       (ibuf[5] >> 16) & 0xFF, (ibuf[5] >> 24) & 0xFF);
-		uint32_t nch = ibuf[6];
-		printf("\n channels -> %d \n", nch);
-		if (ibuf[6] > 0) {
-			uint8_t* cbuf = ( uint8_t*)&ibuf[7];
-			for (int i = 0; i < ibuf[6]; i++) {
-					printf("ch=%d", cbuf[8*i]);
-		  	}
-		}
-------------------------------------------------------------------------------*/
-
 class buffer {
  public:
   /**

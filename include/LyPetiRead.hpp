@@ -1,3 +1,9 @@
+/*
+  \author    Shchablo Konstantin
+  \version   1.0
+  \date      April 2018
+  \copyright GNU Public License.
+*/
 #ifndef LYPETIREAD_h
 #define LYPETIREAD_h 
 
@@ -7,18 +13,6 @@
 #include <zlib.h>
 
 #include "zmBuffer.hpp"
-/* How to use ------------------------------------------------------------------
-  	LyPetiRead stream;
-    stream.open(pathToFile);
-    int codeRead = 1;
-    int pos = 0;
-    zdaq::buffer buf(0x100000); // raw data buf
-    while(codeRead > 0) {
-      codeRead = stream.read(&pos, &buf);
-			// Do your Analysis here! 
-		}
-    stream.close();
-------------------------------------------------------------------------------*/
 class LyPetiRead
 {
 public:
@@ -26,17 +20,13 @@ public:
   LyPetiRead();
   virtual ~LyPetiRead();
   //----------------------------------------------------------------------------
-  
-/* Functions. */ 
+  /* Functions. */ 
   bool open(std::string filename);
   bool close();
-	int read(int* pos, std::vector<zdaq::buffer*>* result);
+	bool read(int* pos, std::vector<zdaq::buffer*>* result);
 	int size();
   //----------------------------------------------------------------------------
-  
 protected:
-  
   int32_t _fdIn;
-
 };
 #endif 
