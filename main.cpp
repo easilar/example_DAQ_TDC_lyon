@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 	    printf("\n channels -> %d \n", nch);
 	    // ---
 
-      // data FEB v.0 MAY ---
+      // data FEB v.0 and v.1.(1) MAY 2019 ---
       if(detId == 120 && ibuf[6] > 0) {
 	    	uint8_t* cbuf = ( uint8_t*)&ibuf[7];
 	    	for (int j = 0; j < ibuf[6]; j++) {
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 	      }
 	    }
       // ---
-      // data FEB v.0 August ---
+      // data FEB v.0 August 2018 ---
       if(detId == 130 && ibuf[6] > 0) {
 	    	uint8_t* cbuf = ( uint8_t*)&ibuf[7];
 	    	for (int j = 0; j < ibuf[6]; j++) {
