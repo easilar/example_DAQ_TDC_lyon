@@ -10,19 +10,40 @@
 
 #include "LyPetiRead.hpp"
 #include "SdhcalPmrAccess.hpp"
+//#include "TFile.h"
 
 int main(int argc, char* argv[]) {
 	 
   LyPetiRead stream;
   bool isOpen = false; isOpen = stream.open(argv[1]);
 
-	int size = stream.size();
+  int size = stream.size();
   int pos = 0;
   bool isRead = true;
   std::vector<zdaq::buffer*> buffers; // raw data
+
+ //TFile f("Detector_Output_Trees.root","RECREATE"); // Final file for output
+ //TTree tPet("tPet","Tree with pseudo Events"); // Tree for petiroc
+ //TTree tTele("tTele","Tree with pseudo Events"); // Tree for  
+
+ //Int_t nBuf;
+ //tPet->Branch("nBuf",&nBuf,"nBuf/I");
+ //tTele->Branch("nBuf",&nBuf,"nBuf/I");
+ //nBuf = 30;
+ //tPet->Fill();
+ //tTele->Fill();
+ //f.cd();
+ //tPet->Write();
+ //tTele->Write();
+ //f.Close()
+ //
+  int mycounter = 0; 
   while(isRead) {
     isRead = stream.read(&pos, &buffers); // read file
-
+    printf("mycounter");
+    printf(mycounter);
+    mycounter++;
+    printf("\n");
     // Do analysis here (example of output data)
 	  printf("================================================================================\n");
     for(int i = 0; i < buffers.size(); i++) {
