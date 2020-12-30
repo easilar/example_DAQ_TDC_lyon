@@ -10,6 +10,7 @@
 
 #include "LyPetiRead.hpp"
 #include "SdhcalPmrAccess.hpp"
+#include "TFile.h"
 
 int main(int argc, char* argv[]) {
 	 
