@@ -21,8 +21,7 @@ set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
   #list(APPEND CMAKE_MODULE_PATH $ENV{ROOTSYS}/cmake/)
   find_package(ROOT CONFIG REQUIRED)
   set(ROOT_DIR $ENV{ROOTSYS})
-  #include("${ROOT_DIR}/cmake/modules/RootNewMacros.cmake")  
-  include("${ROOT_DIR}/RootMacros.cmake")  
+  include("${ROOT_DIR}/cmake/modules/RootNewMacros.cmake")  
   
   include("${ROOT_USE_FILE}")
   
