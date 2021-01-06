@@ -34,6 +34,7 @@ int main(int argc, char* argv[]) {
   uint32_t gtc;
   uint64_t absbcID;
   uint32_t boardID;
+  double payload;
   const Int_t maxnCh = 1000;
   uint8_t ch[maxnCh];
   uint16_t bcid[maxnCh];
@@ -50,10 +51,11 @@ int main(int argc, char* argv[]) {
   tPet.Branch("boardID",&boardID,"boardID/I");
   tPet.Branch("numOfCh",&numOfCh,"numOfCh/I");
   tPet.Branch("ch",ch,"ch[numOfCh]/I");
-  tPet.Branch("time",time,"time[numOfCh]/I");
-  tPet.Branch("coarse",coarse,"coarse[numOfCh]/I");
-  tPet.Branch("fine",fine,"fine[numOfCh]/I");
-  tPet.Branch("bcid",bcid,"bcid[numOfCh]/I");
+  tPet.Branch("time",time,"time[numOfCh]/F");
+  tPet.Branch("coarse",coarse,"coarse[numOfCh]/F");
+  tPet.Branch("fine",fine,"fine[numOfCh]/F");
+  tPet.Branch("bcid",bcid,"bcid[numOfCh]/F");
+  tPet.Branch("payload",&payload,"payload/F");
   //Branches for telescop
   tTele.Branch("nBuf",&nBuf,"nBuf/I");
   tTele.Branch("detID",&detID,"detID/I");
@@ -80,7 +82,8 @@ int main(int argc, char* argv[]) {
 			uint32_t* ibuf = (uint32_t*)buffers.at(i)->payload();
 			uint32_t detId = buffers.at(i)->detectorId()&0xFF;
 			detID = detId;	
-      if((detId == 120 || detId == 130  || detId == 150) && buffers.at(i)->payloadSize()) {
+			payload = buffers.at(i)->payloadSize();
+      if((detId == 120 || detId == 130  || detId == 150) && payload) {
         // header ---
         number = ibuf[0];
         gtc = ibuf[1] & 0xFFFF;
@@ -98,7 +101,7 @@ int main(int argc, char* argv[]) {
         printf("number %d; GTC %d; ABSBCID %d; mezzanine number %d; detID %d",
                number, gtc, absbcID, boardID, detId);
         printf(" IP address %d.%d.%d.%d;", boardIP[0], boardIP[1], boardIP[2], boardIP[3]);
-        printf("\n payload: %d bytes;  channels or length -> %d \n", buffers.at(i)->payloadSize(), numOfCh);
+        printf("\n payload: %d bytes;  channels or length -> %d \n", payload, numOfCh);
         // ---
       }
 
